@@ -1,5 +1,5 @@
 <?php 
-
+require_once("common.php");
 class IndividualPlusMembershipPurchaseCest
 {
     public $email;
@@ -23,16 +23,16 @@ class IndividualPlusMembershipPurchaseCest
         $I->click("join");
         $I->wait(2);
         $I->executeJS("window.scrollTo(0,document.body.scrollHeight);");
-
+        $I->wait(2);
         //Select IndividualPlus plan
-        $I->waitForElementVisible('//*[@id="user-register-form"]/div/div[1]/div[2]/div[1]/div/a');
-        $I->click('//*[@id="user-register-form"]/div/div[1]/div[2]/div[2]/div/a');
+        $I->waitForElementVisible(CP_PLUS);
+        $I->click(CP_PLUS);
         //Click Next button
         $I->click('next');
 
         //Fill the Your account details form
         $this->email='test'.mt_rand().'@gmail.com';
-        $this->password="123";
+        $this->password="#Infoboyz123";
         $this->firstName="test";
         $this->lastName="test";
         $this->phone=9633977699;
@@ -59,10 +59,10 @@ class IndividualPlusMembershipPurchaseCest
 
         //Click Next button
         $I->click('next');
-        $I->wait(2);
+        $I->wait(3);
    
           //Select Master Card & Make Payment
-        $I->waitForElementVisible('/html/body/center/table[6]/tbody/tr[3]/td/table/tbody/tr/td[1]/a/img');
+        $I->waitForElementVisible('/html/body/center/table[6]/tbody/tr[3]/td/table/tbody/tr/td[1]/a/img',15);
         $I->click('/html/body/center/table[6]/tbody/tr[3]/td/table/tbody/tr/td[1]/a/img');
           
         $I->waitForElementVisible('#CardNumber');
@@ -98,7 +98,7 @@ class IndividualPlusMembershipPurchaseCest
          $I->wait(2);
 
         //Check the Current MemberShip
-        $I->see("CP Plus");
+        $I->see("CULTURE PASS PLUS");
         $I->wait(6);
 
     }

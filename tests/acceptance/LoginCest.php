@@ -1,5 +1,5 @@
 <?php 
-
+require_once("common.php");
 class LoginCest
 {
     public $email;
@@ -18,16 +18,16 @@ class LoginCest
         $I->click("join");
         $I->wait(2);
         $I->executeJS("window.scrollTo(0,document.body.scrollHeight);");
-
+        $I->wait(2);
         //Select basic plan
-        $I->waitForElementVisible('//*[@id="user-register-form"]/div/div[1]/div[2]/div[1]/div/a');
-        $I->click('//*[@id="user-register-form"]/div/div[1]/div[2]/div[1]/div/a');
+        $I->waitForElementVisible(CP_BASIC);
+        $I->click(CP_BASIC);
         //Click Next button
         $I->click('next');
 
         //Fill the Your account details form
         $this->email='test'.mt_rand().'@gmail.com';
-        $this->password="123";
+        $this->password="#Infoboyz123";
         $this->firstName="test";
         $this->lastName="test";
         $this->phone=9633977699;
@@ -80,7 +80,7 @@ class LoginCest
         $I->waitForElementVisible('//a[text()="Edit Profile"]');
         $I->wait(2);
         $I->executeJS("window.scrollTo(0,600);");
-
+        $I->wait(2);
         $I->click('//a[text()="Log out"]');
         $I->wait(4);
         $I->see('BOOK YOUR TICKETS');

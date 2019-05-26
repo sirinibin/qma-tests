@@ -1,5 +1,5 @@
 <?php 
-
+require_once("common.php");
 class UpgradeToIndividualPlusCest
 {
     public $email;
@@ -18,16 +18,16 @@ class UpgradeToIndividualPlusCest
         $I->click("join");
         $I->wait(2);
         $I->executeJS("window.scrollTo(0,document.body.scrollHeight);");
-
+        $I->wait(2);
         //Select basic plan
-        $I->waitForElementVisible('//*[@id="user-register-form"]/div/div[1]/div[2]/div[1]/div/a');
-        $I->click('//*[@id="user-register-form"]/div/div[1]/div[2]/div[1]/div/a');
+        $I->waitForElementVisible(CP_BASIC);
+        $I->click(CP_BASIC);
         //Click Next button
         $I->click('next');
 
         //Fill the Your account details form
         $this->email='test'.mt_rand().'@gmail.com';
-        $this->password="123";
+        $this->password="#Infoboyz123";
         $this->firstName="test";
         $this->lastName="test";
         $this->phone=9633977699;
@@ -57,7 +57,7 @@ class UpgradeToIndividualPlusCest
         $I->wait(2);
         $I->waitForElementVisible('//h2[text()="MEMBERSHIP PURCHASED SUCCESSFULY!"]',15);
         $I->executeJS("window.scrollTo(0,700);");
-        $I->wait(6);
+        $I->wait(2);
 
 
         //Login
@@ -77,7 +77,7 @@ class UpgradeToIndividualPlusCest
         $I->wait(2);
 
         //Check the Current MemberShip
-        $I->see("CP Basic");
+        $I->see("CULTURE PASS BASIC");
 
     }
 
@@ -85,7 +85,7 @@ class UpgradeToIndividualPlusCest
     public function tryToTest(AcceptanceTester $I)
     {
          $I->wantTo('Test Upgrade Basic to Individual Plus Membership upgrdation');
-         $I->see("CP Basic");
+         $I->see("CULTURE PASS BASIC");
          //Click Upgrade button
          $I->click('//span[text()="Renew/Upgrade membership"]');
          $I->wait(3);
@@ -94,8 +94,8 @@ class UpgradeToIndividualPlusCest
          $I->wait(2);
 
           //Select IndividualPlus plan
-         $I->waitForElementVisible('/html/body/section[2]/div/div[2]/div[1]/div[2]/div[2]/div/a');
-         $I->click('/html/body/section[2]/div/div[2]/div[1]/div[2]/div[2]/div/a');
+         $I->waitForElementVisible(CP_PLUS_UPGRADE);
+         $I->click(CP_PLUS_UPGRADE);
          //Click Next button
          $I->click('next');
 
@@ -110,7 +110,7 @@ class UpgradeToIndividualPlusCest
           $I->wait(2);
      
           //Select Master Card & Make Payment
-          $I->waitForElementVisible('/html/body/center/table[6]/tbody/tr[3]/td/table/tbody/tr/td[1]/a/img');
+          $I->waitForElementVisible('/html/body/center/table[6]/tbody/tr[3]/td/table/tbody/tr/td[1]/a/img',15);
           $I->click('/html/body/center/table[6]/tbody/tr[3]/td/table/tbody/tr/td[1]/a/img');
             
           $I->waitForElementVisible('#CardNumber');
@@ -134,8 +134,9 @@ class UpgradeToIndividualPlusCest
           $I->amOnPage('/');
           $I->see('BOOK YOUR TICKETS');
           $I->executeJS("window.scrollTo(0,document.body.scrollHeight);");
-          $I->see("CP Plus");
-          $I->wait(6);
+          $I->wait(2);
+          $I->see("CULTURE PASS PLUS");
+          $I->wait(2);
 
 
     }

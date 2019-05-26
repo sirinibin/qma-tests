@@ -1,5 +1,5 @@
 <?php 
-
+require_once("common.php");
 class UpgradeIndividualToFamilyPlusCest
 {
     public $email;
@@ -18,16 +18,16 @@ class UpgradeIndividualToFamilyPlusCest
         $I->click("join");
         $I->wait(2);
         $I->executeJS("window.scrollTo(0,document.body.scrollHeight);");
-
+        $I->wait(2);
         //Select IndividualPlus plan
-        $I->waitForElementVisible('//*[@id="user-register-form"]/div/div[1]/div[2]/div[1]/div/a');
-        $I->click('//*[@id="user-register-form"]/div/div[1]/div[2]/div[2]/div/a');
+        $I->waitForElementVisible(CP_PLUS);
+        $I->click(CP_PLUS);
         //Click Next button
         $I->click('next');
 
         //Fill the Your account details form
         $this->email='test'.mt_rand().'@gmail.com';
-        $this->password="123";
+        $this->password="#Infoboyz123";
         $this->firstName="test";
         $this->lastName="test";
         $this->phone=9633977699;
@@ -57,7 +57,7 @@ class UpgradeIndividualToFamilyPlusCest
         $I->wait(2);
    
           //Select Master Card & Make Payment
-        $I->waitForElementVisible('/html/body/center/table[6]/tbody/tr[3]/td/table/tbody/tr/td[1]/a/img');
+        $I->waitForElementVisible('/html/body/center/table[6]/tbody/tr[3]/td/table/tbody/tr/td[1]/a/img',15);
         $I->click('/html/body/center/table[6]/tbody/tr[3]/td/table/tbody/tr/td[1]/a/img');
           
         $I->waitForElementVisible('#CardNumber');
@@ -75,7 +75,7 @@ class UpgradeIndividualToFamilyPlusCest
         //$I->waitForText('MEMBERSHIP PURCHASED SUCCESSFULY!');
         $I->waitForElementVisible('//h2[text()="MEMBERSHIP PURCHASED SUCCESSFULY!"]',15);
         $I->executeJS("window.scrollTo(0,700);");
-        $I->wait(6);
+        $I->wait(3);
 
         //Login
         
@@ -100,7 +100,7 @@ class UpgradeIndividualToFamilyPlusCest
     public function tryToTest(AcceptanceTester $I)
     {
          $I->wantTo('Test Upgrade Individual to Family Plus Membership upgrdation');
-         $I->see("CP Plus");
+         $I->see("CULTURE PASS PLUS");
          //Click Upgrade button
          $I->click('//span[text()="Renew/Upgrade membership"]');
          $I->wait(3);
@@ -108,8 +108,8 @@ class UpgradeIndividualToFamilyPlusCest
          $I->executeJS("window.scrollTo(0,document.body.scrollHeight);");
          $I->wait(2);
           //Select Family Plus plan
-         $I->waitForElementVisible('/html/body/section[2]/div/div[2]/div[1]/div[2]/div[3]/div/a');
-         $I->click('/html/body/section[2]/div/div[2]/div[1]/div[2]/div[3]/div/a');
+         $I->waitForElementVisible(CP_FAMILY_UPGRADE);
+         $I->click(CP_FAMILY_UPGRADE);
          //Click Next button
          $I->click('next');
 
@@ -124,7 +124,7 @@ class UpgradeIndividualToFamilyPlusCest
           $I->wait(2);
      
           //Select Master Card & Make Payment
-          $I->waitForElementVisible('/html/body/center/table[6]/tbody/tr[3]/td/table/tbody/tr/td[1]/a/img');
+          $I->waitForElementVisible('/html/body/center/table[6]/tbody/tr[3]/td/table/tbody/tr/td[1]/a/img',15);
           $I->click('/html/body/center/table[6]/tbody/tr[3]/td/table/tbody/tr/td[1]/a/img');
             
           $I->waitForElementVisible('#CardNumber');
@@ -148,7 +148,7 @@ class UpgradeIndividualToFamilyPlusCest
            $I->amOnPage('/');
            $I->see('BOOK YOUR TICKETS');
            $I->executeJS("window.scrollTo(0,900);");
-           $I->see("CP Family");
+           $I->see("CULTURE PASS FAMILY");
            $I->wait(6);
 
     }

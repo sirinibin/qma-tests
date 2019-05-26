@@ -1,5 +1,5 @@
 <?php 
-
+require_once("common.php");
 class GuestTicketPurchaseCest
 {
     public function _before(AcceptanceTester $I)
@@ -25,13 +25,14 @@ class GuestTicketPurchaseCest
         $I->waitForElementVisible("/html/body/section[2]/div/div/div[1]/div[2]/h2");
         $I->see('select tickets');
         $I->wait(2);
-        $I->waitForElementVisible('//*[@id="list_tickets"]/div[2]/article/div/button[2]');
-        $I->click('//*[@id="list_tickets"]/div[2]/article/div/button[2]');
+        $I->waitForElementVisible(ADULT_TICKET);
+        $I->click(ADULT_TICKET);
         $I->wait(2);
         //Click Next button
         $I->click('next');
         $I->wait(2);
         $I->executeJS("window.scrollTo(0,600);");
+        $I->wait(2);
         $I->waitForElementVisible('/html/body/section[2]/div/div/div[1]/div[3]/h2');
         $I->see("enter your information to receive tickets");
         $I->wait(2);
@@ -51,8 +52,9 @@ class GuestTicketPurchaseCest
         $I->wait(2);
         //Click Next button
         $I->click('next');
+        $I->wait(3);
         //Select Master Card
-        $I->waitForElementVisible('/html/body/center/table[6]/tbody/tr[3]/td/table/tbody/tr/td[1]/a/img');
+        $I->waitForElementVisible('/html/body/center/table[6]/tbody/tr[3]/td/table/tbody/tr/td[1]/a/img',15);
         $I->click('/html/body/center/table[6]/tbody/tr[3]/td/table/tbody/tr/td[1]/a/img');
         
         $I->waitForElementVisible('#CardNumber');
@@ -69,6 +71,6 @@ class GuestTicketPurchaseCest
         $I->executeJS("window.scrollTo(0,700);");
         $I->waitForElementVisible("//h2[text()='TICKET PURCHASED SUCCESFULLY!']",15);
         $I->executeJS("window.scrollTo(0,500);");
-        $I->wait(5);
+        $I->wait(3);
     }
 }
