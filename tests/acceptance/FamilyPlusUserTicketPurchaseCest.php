@@ -87,9 +87,10 @@ class FamilyPlusUserTicketPurchaseCest
         $I->fillField('password',$this->password);
         //Click Login
         $I->click('//*[@id="edit-submit"]');
-        
-        $I->waitForElementVisible('//a[text()="Log out"]');
-        $I->waitForElementVisible('//a[text()="Edit Profile"]');
+        $I->wait(4);
+        $I->executeJS("window.scrollTo(0,700);");
+        $I->wait(2);
+        $I->waitForElementVisible(LOGOUT_BUTTON,15);
         $I->wait(2);
         $I->executeJS("window.scrollTo(0,600);");
         $I->wait(2);
@@ -128,7 +129,6 @@ class FamilyPlusUserTicketPurchaseCest
         
         $I->fillField('#qmatkt-firstname', $this->firstName);
         $I->fillField('#qmatkt-lastname', $this->lastName);
-        $I->fillField('#qmatkt-email', $this->email);
         $I->fillField('#qmatkt-phone', $this->phone);
 
         $I->wait(2);

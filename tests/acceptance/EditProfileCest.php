@@ -71,12 +71,10 @@ class EditProfileCest
         $I->fillField('password',$this->password);
         //Click Login
         $I->click('//*[@id="edit-submit"]');
-        
-        $I->waitForElementVisible('//a[text()="Log out"]');
-        $I->waitForElementVisible('//a[text()="Edit Profile"]');
+        $I->wait(4);
+        $I->executeJS("window.scrollTo(0,700);");
         $I->wait(2);
-        $I->executeJS("window.scrollTo(0,600);");
-        $I->wait(2);
+        $I->waitForElementVisible(LOGOUT_BUTTON,15);   
         
     }
 
@@ -84,7 +82,7 @@ class EditProfileCest
     public function tryToTest(AcceptanceTester $I)
     {
         $I->wantTo('Test Edit Profile');
-        $I->click('//a[text()="Edit Profile"]');
+        $I->click(EDIT_PROFILE_BUTTON);
         $I->wait(4);
         $I->waitForElementVisible('//h2[text()="edit your profile"]');
         $I->executeJS("window.scrollTo(0,300);");
@@ -102,13 +100,6 @@ class EditProfileCest
         $I->wait(4);
         $I->executeJS("window.scrollTo(0,300);");
         $I->see('Profile updated');
-        $I->wait(4);
-
-        //LogOut
-        $I->click('//a[text()="Log out"]');
-        $I->wait(4);
-        $I->see('BOOK YOUR TICKETS');
-        $I->wait(4);
-
+        $I->wait(3);
     }
 }

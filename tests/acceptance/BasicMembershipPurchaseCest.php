@@ -73,8 +73,10 @@ class BasicMembershipPurchaseCest
         //Click Login
         $I->click('//*[@id="edit-submit"]');
         $I->wait(4);
-        $I->waitForElementVisible('//a[text()="Log out"]');
-        $I->waitForElementVisible('//a[text()="Edit Profile"]');
+        $I->executeJS("window.scrollTo(0,700);");
+        $I->wait(2);
+        $I->waitForElementVisible(LOGOUT_BUTTON,15);
+        $I->waitForElementVisible(EDIT_PROFILE_BUTTON);
         $I->executeJS("window.scrollTo(0,document.body.scrollHeight);");
         $I->wait(2);
 

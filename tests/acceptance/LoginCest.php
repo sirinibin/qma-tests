@@ -75,13 +75,14 @@ class LoginCest
         $I->fillField('password',$this->password);
         //Click Login
         $I->click('//*[@id="edit-submit"]');
-        
-        $I->waitForElementVisible('//a[text()="Log out"]');
-        $I->waitForElementVisible('//a[text()="Edit Profile"]');
+        $I->wait(4);
+        $I->executeJS("window.scrollTo(0,700);");
         $I->wait(2);
-        $I->executeJS("window.scrollTo(0,600);");
+        $I->waitForElementVisible(LOGOUT_BUTTON,15);
         $I->wait(2);
-        $I->click('//a[text()="Log out"]');
+        $I->executeJS("window.scrollTo(0,700);");
+        $I->wait(2);
+        $I->click(LOGOUT_BUTTON);
         $I->wait(4);
         $I->see('BOOK YOUR TICKETS');
         $I->wait(4);
