@@ -132,7 +132,9 @@ class IndividualPlusUserTicketPurchaseCest
         $I->fillField('#qmatkt-firstname', $this->firstName);
         $I->fillField('#qmatkt-lastname', $this->lastName);
         $I->fillField('#qmatkt-phone', $this->phone);
-
+        $I->executeJS("window.scrollTo(0,document.body.scrollHeight);");
+        $I->wait(2);
+        $I->checkOption('/html/body/section[2]/div/div/div[1]/div[3]/div/ul/li[3]/input');
         $I->wait(2);
         //Click Next button
         $I->click('next');

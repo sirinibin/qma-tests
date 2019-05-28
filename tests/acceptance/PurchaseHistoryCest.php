@@ -111,7 +111,9 @@ class PurchasHistoryCest
         $I->fillField('#qmatkt-firstname', "john");
         $I->fillField('#qmatkt-lastname', "Jhones");
         $I->fillField('#qmatkt-phone', 9633977699);
-
+        $I->executeJS("window.scrollTo(0,document.body.scrollHeight);");
+        $I->wait(2);
+        $I->checkOption('/html/body/section[2]/div/div/div[1]/div[3]/div/ul/li[3]/input');
         $I->wait(2);
         //Click Next button
         $I->click('next');

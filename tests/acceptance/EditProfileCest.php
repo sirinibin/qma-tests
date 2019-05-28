@@ -98,8 +98,9 @@ class EditProfileCest
 
         $I->click("SUBMIT");
         $I->wait(4);
-        $I->executeJS("window.scrollTo(0,300);");
-        $I->see('Profile updated');
+        $I->executeJS("window.scrollTo(0,700);");
+        $I->wait(2);
+        $I->see('Your details has been updated');
         $I->wait(3);
     }
 }
