@@ -46,8 +46,12 @@ class EditProfileCest
 
         //Click Next button
         $I->click('next');
+        $I->wait(2);
+        $I->executeJS("window.scrollTo(0,600);");
+        $I->wait(2);
       //  
-        $I->waitForElementVisible('//h2[text()="please check your order"]');
+       // $I->waitForElementVisible('//h2[text()="PLEASE CHECK YOUR ORDER"]',10);
+        $I->see("PLEASE CHECK YOUR ORDER");
        // $I->waitForText('please check your order');
         $I->see($this->email);
         $I->wait(2);

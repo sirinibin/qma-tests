@@ -112,7 +112,8 @@ class FamilyPlusUserTicketPurchaseCest
         //Select ticket types
         $I->executeJS("window.scrollTo(0,600);");
         $I->wait(2);
-        $I->waitForElementVisible("/html/body/section[2]/div/div/div[1]/div[2]/h2");
+       // $I->waitForElementVisible("/html/body/section[2]/div/div/div[1]/div[2]/h2");
+        $I->waitForText("SELECT TICKETS",15);
         $I->see('select tickets');
         $I->wait(2);
         $I->waitForElementVisible(ADULT_TICKET);
